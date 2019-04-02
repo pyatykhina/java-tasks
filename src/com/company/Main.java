@@ -6,21 +6,21 @@ public class Main {
     public static void main(String[] args)
     {
         System.out.println("1. Сложить две матрицы. \n");
-        System.out.println("3. Вычесть из одной матрицы другую. \n");
+        System.out.println("2. Вычесть из одной матрицы другую. \n");
         System.out.println("3. Умножить две матрицы. \n");
         System.out.println("4. Умножить матрицу A на число. \n");
         System.out.println("5. Транспонирование матрицы. \n");
+        System.out.println("6. Матрица на вектор.\n");
+        System.out.println("7. Возведение матрицы A в степень.\n");
+        System.out.println("8. Обратная матрица A.\n");
 
-        // TODO: Выбор размерности
+        int choice;
 
-
-        int choice=1;
-
-        Matrix A = new Matrix(5,5);
+        Matrix A = new Matrix(3,3);
         A.Init();
         A.Display();
 
-        Matrix B = new Matrix(5,5);
+        Matrix B = new Matrix(3,3);
         B.Init();
         B.Display();
 
@@ -41,37 +41,65 @@ public class Main {
                 case 2:
                     System.out.println("");
                     System.out.println("Вычитание из A матрицы B. \n");
-                    Matrix S = A.Subtraction(B);
-                    S.Display();
+                    C = A.Subtraction(B);
+                    C.Display();
                     break;
                 case 3:
                     System.out.println("");
                     System.out.println("Умножение матриц. \n");
-                    Matrix D = A.Multiplication(B);
-                    D.Display();
+                    C = A.Multiplication(B);
+                    C.Display();
                     break;
                 case 4:
                     System.out.println("");
                     System.out.println("Умножение матрицы A на число. \n");
                     System.out.println("Введите число:");
                     int number = in.nextInt();
-                    Matrix O = A.Multiplication(number);
-                    O.Display();
+                    C = A.Multiplication(number);
+                    C.Display();
                     break;
                 case 5:
                     System.out.println("");
                     System.out.println(" Транспонирование матрицы A. \n");
-                    Matrix E = A.Transposition();
-                    E.Display();
+                    C = A.Transposition();
+                    C.Display();
                     System.out.println(" Транспонирование матрицы B. \n");
-                    Matrix J = B.Transposition();
-                    J.Display();
+                    C = B.Transposition();
+                    C.Display();
+                    break;
+                case 6:
+                    Matrix Vector = new Matrix(2,1);
+                    Vector.Init();
+                    System.out.println("");
+                    System.out.println("Вектор: ");
+                    Vector.Display();
+                    System.out.println("");
+                    System.out.println("Умножение матрицы A на вектор. \n");
+                    C = A.Multiplication(Vector);
+                    C.Display();
+                    break;
+                case 7:
+                    System.out.println("");
+                    System.out.println("Умножение матрицы A на число. \n");
+                    System.out.println("Введите степень:");
+                    int pow = in.nextInt();
+                    Matrix D = new Matrix(2,2);
+                    for (int i=0; i<pow; i++){
+                        D = A.Multiplication(pow);
+                    }
+                    D.Display();
+                    break;
+                case 8:
+                    System.out.println("");
+                    System.out.println("Нахождение обратной матрицы для матрицы A. \n");
+                    C = A.Inverse();
+                    C.Display();
                     break;
                 default:
                     System.exit(0);
                     break;
             }
 
-        }while (choice > 0 && choice < 6);
+        }while (choice > 0 && choice < 9);
     }
 }
