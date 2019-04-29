@@ -79,24 +79,7 @@ public class Str {
         Scanner in = new Scanner(System.in);
         inputStr = in.nextLine();
 
-        Validate();
-
         return this;
-    }
-
-    /**
-     *  Валидация строки
-     */
-    public void Validate()
-    {
-        for(int i=0; i<inputStr.length(); i++)
-        {
-            if (inputStr.charAt(i) >= 'a' && inputStr.charAt(i) <= 'z')
-            {
-                System.out.println("В строке не должно быть букв.");
-                System.exit(1);
-            }
-        }
     }
 
     /**
@@ -105,7 +88,7 @@ public class Str {
     public void Display()
     {
         System.out.println("--------");
-        System.out.print("Ответ:  ");
+        System.out.println("Ответ:  ");
         System.out.println(calc());
         System.out.println("--------");
     }
@@ -136,7 +119,6 @@ public class Str {
 
             // прокидываем  пробелы
             if (curr.equals(" ")) continue;
-
 
             // если функция
             if (isFunction(curr)) stack.push(curr);
@@ -211,6 +193,16 @@ public class Str {
             else if (x.equals("cos")) stack.push(Math.cos(Math.toRadians(stack.pop())));
             else if (x.equals("tg")) stack.push(Math.tan(Math.toRadians(stack.pop())));
             else if (x.equals("ctg")) stack.push(1/Math.tan(Math.toRadians(stack.pop())));
+            else if (x.charAt(0) >= 'a' && x.charAt(0) <= 'z')
+            {
+                System.out.print("Введите значение ");
+                System.out.print(x.charAt(0));
+                System.out.println(": ");
+
+                Scanner in = new Scanner(System.in);
+                stack.push(in.nextDouble());
+                System.out.println("--------");
+            }
 
             else if (x.equals("+")) stack.push(stack.pop() + stack.pop());
             else if (x.equals("-"))

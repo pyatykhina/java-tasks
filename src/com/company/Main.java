@@ -6,11 +6,8 @@ public class Main {
     {
         Str input = new Str();
 
-        while (true)
-        {
-            input.Init();
-            input.fromInfixToPostfix();
-            input.Display();
-        }
+        input.Init();
+        input.fromInfixToPostfix();
+        input.Display();
     }
 }
